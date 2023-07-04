@@ -15,14 +15,14 @@ MonoBehaviour:
   _shapeName: Index_to_thumb
   _thumbFeatureConfigs:
     _value:
-    - _mode: 0
-      _feature: 3
-      _state: 9
+    - _mode: 1
+      _feature: 0
+      _state: 0
   _indexFeatureConfigs:
     _value:
-    - _mode: 0
-      _feature: 3
-      _state: 9
+    - _mode: 1
+      _feature: 0
+      _state: 0
   _middleFeatureConfigs:
     _value:
     - _mode: 0
