@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Oculus.Interaction.HandGrab;
 using UnityEngine;
 
-public class Pen : MonoBehaviour, IHandGrabUseDelegate {
+public class Pen : MonoBehaviour {
     /// <summary>
     /// Transform used to target the tip oh the pen.
     /// </summary>
@@ -71,7 +71,7 @@ public class Pen : MonoBehaviour, IHandGrabUseDelegate {
     /// <summary>
     /// Clear the current drawing.
     /// </summary>
-    private void ClearDrawing() {
+    public void ClearDrawing() {
         // Destroying all associated game object and removing lines from the stack.
         while (lineRenderers.Count > 0)
             Destroy(lineRenderers.Pop().gameObject);
