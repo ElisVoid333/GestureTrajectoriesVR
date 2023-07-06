@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pidTextField: {fileID: 1947059251773264370}
+  isLeft: {fileID: 0}
 --- !u!4 &611835689
 Transform:
   m_ObjectHideFlags: 0

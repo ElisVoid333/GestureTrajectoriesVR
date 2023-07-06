@@ -10,6 +10,7 @@ using Unity.VisualScripting;
 public class InputManager : MonoBehaviour
 {
     public TMP_InputField pidTextField;
+    //public Toggle isLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,7 @@ public class InputManager : MonoBehaviour
         PlayerPrefs.SetString("conditionOrdering", conditionOrderString);
 
         SaveData.SetFilePath(id);
-        SceneManager.LoadScene("PenScene");
+        SceneManager.LoadScene("IntroScene");
     }
 
     public static string GetConditionOrdering(int pid)
