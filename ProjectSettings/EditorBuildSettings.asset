@@ -7,13 +7,22 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/InputScene.unity
-    guid: f57b8134889a3b946978757ddd2f2785
-  - enabled: 1
-    path: Assets/Scenes/PenScene.unity
-    guid: 0d1c33fcbc22d614b8af06368e72438d
+    guid: c964686a479ba594188912e066e95e3a
   - enabled: 1
     path: Assets/Scenes/IntroScene.unity
     guid: 9a8c9d5ae3af64c4694446a322da9a17
+  - enabled: 1
+    path: Assets/Scenes/PinchScene.unity
+    guid: 5d04d53596193e24d8cf58f86bcafdd8
+  - enabled: 1
+    path: Assets/Scenes/IndexScene.unity
+    guid: 1f4516f159830504faca6874e0bdd99f
+  - enabled: 1
+    path: Assets/Scenes/TouchScene.unity
+    guid: 270490ea0662f76448f5c11e10780f8d
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: f57b8134889a3b946978757ddd2f2785
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 9a1a4cd7dbfed75469b4f4217b96e6f8, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: fc94de929adde9948bdd6c944975de7e, type: 2}
