@@ -66,6 +66,16 @@ public class Pen : MonoBehaviour {
     private void Update() {
         if(isDrawing)
             Draw();
+
+
+        //Activate Draw with space button *************************************************
+        if (Input.GetKeyDown(KeyCode.Space) && !isDrawing)
+        {
+            BeginUse();
+        }else if (Input.GetKeyDown(KeyCode.Space) && isDrawing)
+        {
+            EndUse();
+        }
     }
 
     /// <summary>
