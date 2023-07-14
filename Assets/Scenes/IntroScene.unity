@@ -751,6 +751,7 @@ MonoBehaviour:
   penWidth: 0.01
   accuracy: 0.006
   penColour: {r: 0, g: 1, b: 0.21683025, a: 1}
+  isDrawing: 0
 --- !u!4 &526448474
 Transform:
   m_ObjectHideFlags: 0
@@ -2349,7 +2350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125640, guid: d2d6934a666a18d46b8b7a3864dc9f63, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2486,6 +2487,7 @@ MonoBehaviour:
   penWidth: 0.01
   accuracy: 0.006
   penColour: {r: 0, g: 0.8587489, b: 1, a: 1}
+  isDrawing: 0
 --- !u!1 &229436236392855367
 GameObject:
   m_ObjectHideFlags: 0

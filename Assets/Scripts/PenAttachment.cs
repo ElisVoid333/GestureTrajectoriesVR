@@ -55,7 +55,7 @@ public class Pen : MonoBehaviour {
     /// <summary>
     /// Whether or not the user is drawing.
     /// </summary>
-    private bool isDrawing;
+    public bool isDrawing;
     
     
     private void Start() {
@@ -67,15 +67,6 @@ public class Pen : MonoBehaviour {
         if(isDrawing)
             Draw();
 
-
-        //Activate Draw with space button *************************************************
-        if (Input.GetKeyDown(KeyCode.Space) && !isDrawing)
-        {
-            BeginUse();
-        }else if (Input.GetKeyDown(KeyCode.Space) && isDrawing)
-        {
-            EndUse();
-        }
     }
 
     /// <summary>
@@ -84,7 +75,9 @@ public class Pen : MonoBehaviour {
     public void ClearDrawing() {
         // Destroying all associated game object and removing lines from the stack.
         while (lineRenderers.Count > 0)
+        {
             Destroy(lineRenderers.Pop().gameObject);
+        }
     }
 
     private void CreateNewLine() {
@@ -131,4 +124,5 @@ public class Pen : MonoBehaviour {
     public float ComputeUseStrength(float strength) {
         return strength;
     }
+
 }

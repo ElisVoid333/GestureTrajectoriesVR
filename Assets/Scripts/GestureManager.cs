@@ -1,9 +1,15 @@
 using Oculus.Interaction;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Device;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
+
+
+public enum Status { ShowGesture, BlankBeforeDraw, Drawing, BlankAfterDraw }
 
 
 public class GestureManager : MonoBehaviour
@@ -13,40 +19,145 @@ public class GestureManager : MonoBehaviour
     public List<GameObject> _buttons = new List<GameObject>();
 
     int pid;
-    string order;
+    int order;
     string currentScene;
     private int handedness;
+    private bool isDrawing;
     public GameObject leftTip; 
     public GameObject rightTip; 
     public GameObject leftPen; 
     public GameObject rightPen;
+    private Pen PenControl;
 
     private int indexP;
-    private int indexB;
+    //private int indexB;
+
+    public static Status status, prevStatus;
 
     // Start is called before the first frame update
     void Start()
     {
         indexP = 0;
-        indexB = 0;
+        //indexB = 0;
 
         _videoPlayer.loopPointReached += EndReached;
 
         pid = PlayerPrefs.GetInt("pid");
-        order = PlayerPrefs.GetString("conditionOrdering");
+        order = PlayerPrefs.GetInt("conditionOrdering");
         currentScene = SceneManager.GetActiveScene().name.ToString();
 
-        if (currentScene != "IntroScene")
-        {
-            handedness = PlayerPrefs.GetInt("left");
-            ActivateHand(handedness);
-        }
+        handedness = PlayerPrefs.GetInt("left");
+        ActivateHand(handedness);
+
+        prevStatus = Status.ShowGesture;
+        status = Status.Drawing;
+
+        SaveData.SetCondition(currentScene);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //isDrawing = PenControl.isDrawing;
+
+        switch (status)
+        {
+            case (Status.BlankAfterDraw):
+
+                Debug.Log("**********************BLANK AFTER DRAW****************************");
+
+                if (prevStatus != status)
+                {
+                    if (indexP != 0)
+                    {
+                        RecordGesture();
+                        Debug.Log("************ERASE***************");
+
+                        Erase();
+                        prevStatus = status;
+                        break;
+                    }
+                    else
+                    {
+                        HidePanel();
+                        prevStatus = status;
+                    }
+                }
+                else
+                {
+                    status = Status.ShowGesture;
+                }
+
+                break;
+
+
+            case (Status.ShowGesture):
+
+                Debug.Log("**********************SHOW GESTURE****************************");
+
+                if (prevStatus != status)
+                {
+                    if (indexP < _panel.Count - 1)
+                    {
+                        indexP++;
+                        ShowPanel();
+                    }
+                    else
+                    {
+                        NextScene();
+                    }
+
+                    prevStatus = status;
+                }
+
+                break;
+
+            case (Status.BlankBeforeDraw):
+
+                Debug.Log("**********************BLANK BEFORE DRAW****************************");
+
+                if (prevStatus != status)
+                {
+                    HidePanel();
+
+                    prevStatus = status;
+                }
+                else
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        PenControl.BeginUse();
+                        SaveData.SetTimeDrawStart();
+                        status = Status.Drawing;
+                        break;
+                    }
+                }
+
+                break;
+
+
+            case (Status.Drawing):
+
+                Debug.Log("**********************DRAWING****************************");
+
+                if (prevStatus != status)
+                {
+                    if (Input.GetKeyDown(KeyCode.Space) && prevStatus != Status.ShowGesture)
+                    {
+                        PenControl.EndUse();
+                        SaveData.SetTimeDrawEnd();
+                        prevStatus = status;
+                        break;
+                    }
+
+                }
+                else
+                {
+                    status = Status.BlankAfterDraw;
+                }
+
+                break;
+        }
     }
 
     void EndReached(UnityEngine.Video.VideoPlayer vp)
@@ -60,20 +171,38 @@ public class GestureManager : MonoBehaviour
 
     public void ShowNext()
     {
-        //Debug.Log("Index : " + indexP + "************************");
-        //Debug.Log("Panel Count : " + _panel.Count + "************************");
 
-        if (indexP < _panel.Count - 1)
+        switch (status) //Cycles through the trial states
         {
-            HidePanel();
-            indexP++;
-            ShowPanel();
+            case (Status.BlankAfterDraw):
+
+                status = Status.ShowGesture;
+
+                break;
+
+            case (Status.ShowGesture):
+
+                status = Status.BlankBeforeDraw;
+
+                break;
+
+            case (Status.BlankBeforeDraw):
+
+                status = Status.Drawing;
+
+                break;
+
+            case (Status.Drawing):
+
+                status = Status.BlankAfterDraw;
+
+                break;
         }
-        else
-        {
-            HidePanel();
-            NextScene();
-        }
+    }
+
+    private void RecordGesture()
+    {
+
     }
 
     public void HidePanel()
@@ -88,14 +217,7 @@ public class GestureManager : MonoBehaviour
 
     public void Erase()
     {
-        if(handedness == 0)
-        {
-            rightPen.GetComponent<Pen>().ClearDrawing();
-        }
-        else
-        {
-            leftPen.GetComponent<Pen>().ClearDrawing();
-        }
+        PenControl.ClearDrawing();
     }
 
     private void ActivateHand(int hand)
@@ -106,6 +228,8 @@ public class GestureManager : MonoBehaviour
             rightTip.SetActive(true);
             leftPen.SetActive(false);
             leftTip.SetActive(false);
+
+            PenControl = rightPen.GetComponent<Pen>();
         }
         else
         {
@@ -113,75 +237,78 @@ public class GestureManager : MonoBehaviour
             rightTip.SetActive(false);
             leftPen.SetActive(true);
             leftTip.SetActive(true);
+
+            PenControl = leftPen.GetComponent<Pen>();
         }
     }
 
-    public void RecordGesture()
-    {
-
-    }
 
     public void NextScene()
     {
-        //Debug.Log("Order: " + order);
-        //Debug.Log("Current Scene: " + currentScene);
-
-        if (order == "Touch,Index,Pinch")
+        switch (order)
         {
-            if (currentScene == "IntroScene")
-            {
-                SceneManager.LoadScene("TouchScene");
-            }
-            else if (currentScene == "TouchScene")
-            {
-                SceneManager.LoadScene("IndexScene");
-            }
-            else if (currentScene == "IndexScene")
-            {
-                SceneManager.LoadScene("PinchScene");
-            }
-            else
-            {
-                SceneManager.LoadScene("EndScene");
-            }
 
-        }else if (order == "Index,Pinch,Touch")
-        {
-            if (currentScene == "IntroScene")
-            {
-                SceneManager.LoadScene("IndexScene");
-            }
-            else if (currentScene == "IndexScene")
-            {
-                SceneManager.LoadScene("PinchScene");
-            }
-            else if (currentScene == "PinchScene")
-            {
-                SceneManager.LoadScene("TouchScene");
-            }
-            else
-            {
-                SceneManager.LoadScene("EndScene");
-            }
+            case (0):
+                if (currentScene == "IntroScene")
+                {
+                    SceneManager.LoadScene("Touch");
+                }
+                else if (currentScene == "Touch")
+                {
+                    SceneManager.LoadScene("Index");
+                }
+                else if (currentScene == "Index")
+                {
+                    SceneManager.LoadScene("Pinch");
+                }
+                else
+                {
+                    SceneManager.LoadScene("EndScene");
+                }
 
-        }else if (order == "Pinch,Touch,Index")
-        {
-            if (currentScene == "IntroScene")
-            {
-                SceneManager.LoadScene("PinchScene");
-            }
-            else if (currentScene == "PinchScene")
-            {
-                SceneManager.LoadScene("TouchScene");
-            }
-            else if (currentScene == "TouchScene")
-            {
-                SceneManager.LoadScene("IndexScene");
-            }
-            else
-            {
-                SceneManager.LoadScene("EndScene");
-            }
+                break;
+
+
+            case (1):
+                if (currentScene == "IntroScene")
+                {
+                    SceneManager.LoadScene("Index");
+                }
+                else if (currentScene == "Index")
+                {
+                    SceneManager.LoadScene("Pinch");
+                }
+                else if (currentScene == "Pinch")
+                {
+                    SceneManager.LoadScene("Touch");
+                }
+                else
+                {
+                    SceneManager.LoadScene("EndScene");
+                }
+
+                break;
+
+
+            case (2):
+                if (currentScene == "IntroScene")
+                {
+                    SceneManager.LoadScene("Pinch");
+                }
+                else if (currentScene == "Pinch")
+                {
+                    SceneManager.LoadScene("Touch");
+                }
+                else if (currentScene == "Touch")
+                {
+                    SceneManager.LoadScene("Index");
+                }
+                else
+                {
+                    SceneManager.LoadScene("EndScene");
+                }
+
+                break;
 
         }
     }

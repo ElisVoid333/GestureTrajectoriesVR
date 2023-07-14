@@ -12,6 +12,7 @@ public class SetHandedness : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetRight();
         left = false;
         background.color = Color.gray;
     }

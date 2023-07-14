@@ -36,19 +36,20 @@ public class InputManager : MonoBehaviour
 
         //PlayerPrefs.SetInt("left", isLeft.isOn ? 1 : 0);
         // Debug.Log("Uh hello");
-        string conditionOrderString = GetConditionOrdering(id);
+        int conditionOrderString = GetConditionOrdering(id);
         // Debug.Log("///// " + conditionOrderString);
-        PlayerPrefs.SetString("conditionOrdering", conditionOrderString);
+        PlayerPrefs.SetInt("conditionOrdering", conditionOrderString);
 
         SaveData.SetFilePath(id);
         SceneManager.LoadScene("IntroScene");
     }
 
-    public static string GetConditionOrdering(int pid)
+    public static int GetConditionOrdering(int pid)
     {
 
         int order = pid % 3;
         // Debug.Log(order);
+        /*
         string conditions = "";
         switch (order)
         {
@@ -63,8 +64,8 @@ public class InputManager : MonoBehaviour
                 conditions = "Pinch,Touch,Index";
                 break;
 
-        }
+        }*/
 
-        return conditions;
+        return order;
     }
 }
