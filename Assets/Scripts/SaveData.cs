@@ -25,6 +25,7 @@ public class SaveData
     public static string gestureSize = "";
     public static string gestureComplexity = "";
     public static string condition = "";
+    public static string lineArr;
 
     public static DateTime BEGIN = new DateTime(2020, 1, 1);
 
@@ -51,7 +52,8 @@ public class SaveData
    		try {
     		using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepathData, true)) {
 
-    			file.WriteLine("pid;block;condition;gestureName;gestureSize;gestureComplexity;timeTrialStart;timeDrawStart;timeDrawEnd;pathData;");
+    			//file.WriteLine("pid;block;condition;gestureName;gestureSize;gestureComplexity;timeTrialStart;timeDrawStart;timeDrawEnd;pathData;");
+    			file.WriteLine("pid;block;condition;gestureName;timeTrialStart;timeDrawStart;timeDrawEnd;pathData;");
 
     		} 
     	}
@@ -89,7 +91,12 @@ public class SaveData
    		gestureName = name;
    	}
 
-   	public static void SetGestureSize(string size) {
+    public static void SetPID(int ID)
+    {
+        pid = ID;
+    }
+
+    public static void SetGestureSize(string size) {
    		gestureSize = size;
    	}
 
@@ -102,66 +109,30 @@ public class SaveData
    		condition = cond;
    	}
 
+    public static void SetLine(string line)
+    {
+        lineArr = line;
+    }
+
     public static void AddCurrentRecord() {
-    	// string handData = CreateJSONFromList("handData",hps);
-    	string pathData = CreateJSONFromList("pathData",path);
-    	int block = PlayerPrefs.GetInt("overallState");
+        string pathData = lineArr;
+        //Debug.Log("Line Vector List : " + pathData);
+        int block = PlayerPrefs.GetInt("overallState");
     	// hps.Clear();
     	path.Clear();
     	try {
     		using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepathData, true)) {
 
-    			file.WriteLine(pid+";"+block+";"+condition+";"+gestureName+";"+gestureSize+";"+gestureComplexity+";"+timeTrialStart+";"+timeDrawStart+";"+timeDrawEnd+";"+pathData);
+    			//file.WriteLine(pid+";"+block+";"+condition+";"+gestureName+";"+gestureSize+";"+gestureComplexity+";"+timeTrialStart+";"+timeDrawStart+";"+timeDrawEnd+";"+pathData);
+                file.WriteLine(pid + ";" + block + ";" + condition + ";" + gestureName + ";" + timeTrialStart + ";" + timeDrawStart + ";" + timeDrawEnd + ";" + pathData);
 
-    		} 
+            } 
     	}
     	catch (Exception ex) {
     		throw new ApplicationException("Could not save to file: ", ex);
     	}
     
     }
-
-    /*
-    public static void writeHandPoint(HandPoint handPoint) {
-    	// string handData = CreateJSONFromList("handData",hps);
-    	// string pathData = CreateJSONFromList("pathData",path);
-    	string hp = JsonUtility.ToJson(handPoint);
-    	    	int block = PlayerPrefs.GetInt("overallState");
-
-    	// hps.Clear();
-    	// path.Clear();
-    	try {
-    		using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepathRaw, true)) {
-
-    			file.WriteLine(pid+";"+block+";"+condition+";"+gestureName+";"+gestureSize+";"+gestureComplexity+";"+hp);
-
-    		} 
-    	}
-    	catch (Exception ex) {
-    		throw new ApplicationException("Could not save to file: ", ex);
-    	}
-    
-    }
-    */
-
-    // public static void CreateJSONs() {
-    // 	StringBuilder handData = new StringBuilder("{");
-    //     for (int i = 0; i < hps.Count; i++) {
-    //         handData = handData.Append(JsonUtility.ToJson(hps[i]) + ",");
-    //     }
-    //     handData[handData.Length-1] = '}';
-
-    //     StringBuilder pathData = new StringBuilder("{");
-    //     for (int i = 0; i < path.Count; i++) {
-    //         pathData = pathData.Append(JsonUtility.ToJson(path[i]) + ",");
-    //     }
-
-    //     pathData[pathData.Length-1] = '}';
-
-    //     Debug.Log(handData.ToString());
-    //     hps.Clear();
-    //     path.Clear();
-    // }
 
     public static string CreateJSONFromList<T>(string name, List<T> x) {
     	StringBuilder xStr = new StringBuilder("\""+name+"\":{");
@@ -172,5 +143,36 @@ public class SaveData
     	return xStr.ToString();
     }
 
- 
+    /*
+    public static string CreateJSONstring(Vector3[] line)
+    {
+        string json = JsonUtility.ToJson(line[0]);
+        Debug.Log("Line Vector List : " + json);
+        //string json = JsonUtility.ToJson(line);
+
+        return json;
+    }
+    */
+
+    public static void writeHandPoint(HandPoint handPoint)
+    {
+        string hp = JsonUtility.ToJson(handPoint);
+        int block = PlayerPrefs.GetInt("overallState");
+
+        try
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepathRaw, true))
+            {
+
+                //file.WriteLine(pid + ";" + block + ";" + condition + ";" + gestureName + ";" + gestureSize + ";" + gestureComplexity + ";" + hp);
+                file.WriteLine(pid + ";" + block + ";" + condition + ";" + gestureName + ";" + hp);
+
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new ApplicationException("Could not save to file: ", ex);
+        }
+
+    }
 }

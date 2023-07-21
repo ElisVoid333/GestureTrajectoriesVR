@@ -46,7 +46,8 @@ public class Pen : MonoBehaviour {
     /// Used to save the lines key points to draw lines. 
     /// </summary>
     private Stack<LineRenderer> lineRenderers;
-    
+    private LineRenderer currentLine;
+
     /// <summary>
     /// Counter used to save pen's key points with a unique index.
     /// </summary>
@@ -99,7 +100,7 @@ public class Pen : MonoBehaviour {
     /// If possible, add a new kay point to the LineRenderer.
     /// </summary>
     private void Draw() {
-        LineRenderer currentLine = lineRenderers.Peek(); // Last line used in the drawing
+        currentLine = lineRenderers.Peek(); // Last line used in the drawing
         
         // Check if the position is far enough to be considered as a keypoint.
         Vector3 lastRecordedPosition = currentLine.GetPosition(index);
@@ -125,4 +126,22 @@ public class Pen : MonoBehaviour {
         return strength;
     }
 
+    public string RecordLine()
+    {
+        int positionCount = currentLine.positionCount;
+        string json = "Line: ";
+
+        Vector3[] LineData = new Vector3[positionCount];
+
+        for (int i = 0; i < positionCount; i++)
+        {
+            LineData[i] = currentLine.GetPosition(i);
+            json = json + "Point" + i + ": " + JsonUtility.ToJson(LineData[i]) + ", ";
+        }
+
+        //string json = JsonUtility.ToJson(LineData[0]);
+        Debug.Log(json);
+
+        return json;
+    }
 }

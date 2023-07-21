@@ -36,9 +36,9 @@ public class InputManager : MonoBehaviour
 
         //PlayerPrefs.SetInt("left", isLeft.isOn ? 1 : 0);
         // Debug.Log("Uh hello");
-        int conditionOrderString = GetConditionOrdering(id);
+        int conditionOrder = GetConditionOrdering(id);
         // Debug.Log("///// " + conditionOrderString);
-        PlayerPrefs.SetInt("conditionOrdering", conditionOrderString);
+        PlayerPrefs.SetInt("conditionOrdering", conditionOrder);
 
         SaveData.SetFilePath(id);
         SceneManager.LoadScene("IntroScene");

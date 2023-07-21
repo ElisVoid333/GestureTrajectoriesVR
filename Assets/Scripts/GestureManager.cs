@@ -1,4 +1,4 @@
-using Oculus.Interaction;
+using Oculus.Interaction.Input;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Device;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
+using UnityEngine.UI;
 
 
 public enum Status { ShowGesture, BlankBeforeDraw, Drawing, BlankAfterDraw }
@@ -17,16 +18,30 @@ public class GestureManager : MonoBehaviour
     public VideoPlayer _videoPlayer;
     public List<GameObject> _panel = new List<GameObject>();
     public List<GameObject> _buttons = new List<GameObject>();
+    //private GameObject[] panelArr;
 
     int pid;
     int order;
     string currentScene;
     private int handedness;
     private bool isDrawing;
+    private bool isPinching;
+    private bool isPointing;
+
     public GameObject leftTip; 
     public GameObject rightTip; 
     public GameObject leftPen; 
     public GameObject rightPen;
+
+    public OVRSkeleton _rightSkeleton;
+    public Hand _rightHand;
+    public OVRSkeleton _leftSkeleton;
+    public Hand _leftHand;
+
+    public bool testing;
+
+    private OVRSkeleton _Skeleton;
+    private Hand _Hand;
     private Pen PenControl;
 
     private int indexP;
@@ -52,13 +67,23 @@ public class GestureManager : MonoBehaviour
         prevStatus = Status.ShowGesture;
         status = Status.Drawing;
 
+        SaveData.SetPID(pid);
         SaveData.SetCondition(currentScene);
+
+        if (testing)
+        {
+            PanelHandler.CreateLimittedGestureList(LoadImages());
+        }
+        else
+        {
+            PanelHandler.CreateGestureList(LoadImages());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //isDrawing = PenControl.isDrawing;
+        isDrawing = PenControl.isDrawing;
 
         switch (status)
         {
@@ -74,6 +99,7 @@ public class GestureManager : MonoBehaviour
                         Debug.Log("************ERASE***************");
 
                         Erase();
+                        SaveData.AddCurrentRecord();
                         prevStatus = status;
                         break;
                     }
@@ -97,17 +123,17 @@ public class GestureManager : MonoBehaviour
 
                 if (prevStatus != status)
                 {
-                    if (indexP < _panel.Count - 1)
-                    {
-                        indexP++;
-                        ShowPanel();
-                    }
-                    else
-                    {
-                        NextScene();
-                    }
+                    ShowPanel();
 
                     prevStatus = status;
+                }
+                else
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        status = Status.BlankBeforeDraw;
+                        break;
+                    }
                 }
 
                 break;
@@ -120,6 +146,8 @@ public class GestureManager : MonoBehaviour
                 {
                     HidePanel();
 
+                    SaveData.SetTimeTrialStart();
+                    
                     prevStatus = status;
                 }
                 else
@@ -127,10 +155,13 @@ public class GestureManager : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
                         PenControl.BeginUse();
+                        
                         SaveData.SetTimeDrawStart();
                         status = Status.Drawing;
                         break;
                     }
+
+                    _buttons[1].gameObject.SetActive(false);
                 }
 
                 break;
@@ -145,9 +176,16 @@ public class GestureManager : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.Space) && prevStatus != Status.ShowGesture)
                     {
                         PenControl.EndUse();
+                        _buttons[1].gameObject.SetActive(true);
                         SaveData.SetTimeDrawEnd();
                         prevStatus = status;
                         break;
+                    }
+
+                    if (prevStatus != Status.ShowGesture)
+                    {
+                        HandPoint handPoint = new HandPoint(_Skeleton, _Hand, isPinching, isPointing, isDrawing);
+                        SaveData.writeHandPoint(handPoint);
                     }
 
                 }
@@ -202,7 +240,20 @@ public class GestureManager : MonoBehaviour
 
     private void RecordGesture()
     {
+        string line = PenControl.RecordLine();
+        //Debug.Log("Line Vector List : " + line);
+        SaveData.SetLine(line);
+        //string gesture = SaveData.CreateJSONstring(line);
+    }
 
+    public void TogglePinching(bool pinching)
+    {
+        isPinching = pinching;
+    }
+
+    public void TogglePointing(bool pointing)
+    {
+        isPointing = pointing;
     }
 
     public void HidePanel()
@@ -212,7 +263,9 @@ public class GestureManager : MonoBehaviour
 
     public void ShowPanel()
     {
-        _panel[indexP].gameObject.SetActive(true);
+        //_panel[indexP].gameObject.SetActive(true);
+        indexP = PanelHandler.SetNewPanel(_panel);
+        
     }
 
     public void Erase()
@@ -230,6 +283,9 @@ public class GestureManager : MonoBehaviour
             leftTip.SetActive(false);
 
             PenControl = rightPen.GetComponent<Pen>();
+
+            _Skeleton = _rightSkeleton;
+            _Hand = _rightHand;
         }
         else
         {
@@ -239,12 +295,29 @@ public class GestureManager : MonoBehaviour
             leftTip.SetActive(true);
 
             PenControl = leftPen.GetComponent<Pen>();
+
+            _Skeleton = _leftSkeleton;
+            _Hand = _leftHand;
         }
     }
 
+    public Image[] LoadImages()
+    {
+        Image[] items = new Image[12];
+
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i] = Resources.Load("Gestures/Image/G" + (i + 1), typeof(Image)) as Image;
+            // items[i] = Resources.Load("Default/Materials/untitled",typeof(Material)) as Material;
+        }
+        return items;
+    }
 
     public void NextScene()
     {
+        int state = PlayerPrefs.GetInt("overallState") + 1;
+        PlayerPrefs.SetInt("overallState", state);
+
         switch (order)
         {
 

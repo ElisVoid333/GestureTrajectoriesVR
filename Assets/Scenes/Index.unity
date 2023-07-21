@@ -167,7 +167,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2835953
 MonoBehaviour:
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &2835954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -1229,6 +1229,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68971733}
   m_CullTransparentMesh: 0
+--- !u!114 &74390822 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2622204612587995419, guid: c89b2c4e711f8a14ba3df7e4b3c71f12, type: 3}
+  m_PrefabInstance: {fileID: 704929611}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2609c54f376cffc4da1ab9401cc1a36f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &74744638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,7 +1583,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &181207885
 MonoBehaviour:
@@ -1587,7 +1598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &181207886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1656,7 +1667,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -2020,7 +2031,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 77a319e3833459342b57c7a88aa04c64, type: 3}
+  m_Texture: {fileID: 2800000, guid: af012c293046297429d10d4a9e6f57ca, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3354,19 +3365,34 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526448468}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de76f7169412b8f4896235a1585d8939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selector: {fileID: 282790821}
+  _selector: {fileID: 1220206273}
   _whenSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 526448473}
-        m_TargetAssemblyTypeName: Pen, Assembly-CSharp
-        m_MethodName: ClearDrawing
-        m_Mode: 1
+      - m_Target: {fileID: 1444968847}
+        m_TargetAssemblyTypeName: GestureManager, Assembly-CSharp
+        m_MethodName: TogglePinching
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  _whenUnselected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1444968847}
+        m_TargetAssemblyTypeName: GestureManager, Assembly-CSharp
+        m_MethodName: TogglePinching
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3375,9 +3401,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _whenUnselected:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &526448472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3385,7 +3408,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526448468}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de76f7169412b8f4896235a1585d8939, type: 3}
   m_Name: 
@@ -3394,25 +3417,25 @@ MonoBehaviour:
   _whenSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 526448473}
-        m_TargetAssemblyTypeName: Pen, Assembly-CSharp
-        m_MethodName: BeginUse
-        m_Mode: 1
+      - m_Target: {fileID: 1444968847}
+        m_TargetAssemblyTypeName: GestureManager, Assembly-CSharp
+        m_MethodName: TogglePointing
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   _whenUnselected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 526448473}
-        m_TargetAssemblyTypeName: Pen, Assembly-CSharp
-        m_MethodName: EndUse
-        m_Mode: 1
+      - m_Target: {fileID: 1444968847}
+        m_TargetAssemblyTypeName: GestureManager, Assembly-CSharp
+        m_MethodName: TogglePointing
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3535,7 +3558,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 9faa58a4653e7c647ab9afd9ee7a9291, type: 3}
+  m_Texture: {fileID: 2800000, guid: 634a95c688590a144adf3a6da263ab5c, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3799,7 +3822,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 018055a0a8c5d1945ab7fe4d77aeccb2, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8eab7b7078260e3478f38d221bb5d048, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3958,7 +3981,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &674789466
 MonoBehaviour:
@@ -3973,7 +3996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &674789467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4042,7 +4065,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -4343,7 +4366,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: d31e585f509747542a61c4e5ea372b09, type: 3}
+  m_Texture: {fileID: 2800000, guid: 45e88369fc52dc44da24806c3eb9561a, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4464,7 +4487,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ecf5cc693c23b1e4bad1fbdd49acae3b, type: 3}
+  m_Texture: {fileID: 2800000, guid: 2520cd81b1cc12d4cbb91c923dadc429, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -5169,7 +5192,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &855553027
 MonoBehaviour:
@@ -5184,7 +5207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &855553028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5253,7 +5276,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -5374,7 +5397,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &944582816
 MonoBehaviour:
@@ -5389,7 +5412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &944582817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5458,7 +5481,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -6277,7 +6300,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1078539290
 MonoBehaviour:
@@ -6292,7 +6315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &1078539291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6361,7 +6384,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -6513,7 +6536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 67f505b7eab50a64bb22a21caae3bace, type: 3}
+  m_Texture: {fileID: 2800000, guid: 1f742c8866c201f4d9bccc0e3edbef4a, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -6707,7 +6730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 387a2da272984674789becccad0c62bb, type: 3}
+  m_Texture: {fileID: 2800000, guid: ccc2bdf9894a35d40b37036333b0162d, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -7012,7 +7035,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1167560809
 MonoBehaviour:
@@ -7027,7 +7050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &1167560810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7096,7 +7119,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -7212,7 +7235,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1207299462
 MonoBehaviour:
@@ -7227,7 +7250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &1207299463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7296,7 +7319,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -7591,6 +7614,17 @@ MonoBehaviour:
   _fingerFeatureStateProvider: {fileID: 1220206274}
   _shapes:
   - {fileID: 11400000, guid: 26da59b6109130549938726426ff4210, type: 2}
+--- !u!114 &1269073519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2168491157642368163, guid: c89b2c4e711f8a14ba3df7e4b3c71f12, type: 3}
+  m_PrefabInstance: {fileID: 704929611}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2609c54f376cffc4da1ab9401cc1a36f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1300233675
 GameObject:
   m_ObjectHideFlags: 0
@@ -8027,6 +8061,11 @@ MonoBehaviour:
   rightTip: {fileID: 229436236927106588}
   leftPen: {fileID: 526448468}
   rightPen: {fileID: 229436236392855367}
+  _rightSkeleton: {fileID: 74390822}
+  _rightHand: {fileID: 704929614}
+  _leftSkeleton: {fileID: 1269073519}
+  _leftHand: {fileID: 704929612}
+  testing: 1
 --- !u!1 &1521325735
 GameObject:
   m_ObjectHideFlags: 0
@@ -8107,7 +8146,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: c8fe1867abb646449961249e3fe5f0ae, type: 3}
+  m_Texture: {fileID: 2800000, guid: de7f1d15e5d30714a904a1e24d69cab4, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -8307,7 +8346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &1585080231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8376,7 +8415,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -8468,7 +8507,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1592176489
 GameObject:
@@ -9315,7 +9354,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1839865570
 MonoBehaviour:
@@ -9330,7 +9369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &1839865571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9399,7 +9438,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -9515,7 +9554,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1864474596
 MonoBehaviour:
@@ -9530,7 +9569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &1864474597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9599,7 +9638,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -9788,7 +9827,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.825}
-  m_SizeDelta: {x: 620, y: 484.39}
+  m_SizeDelta: {x: 660, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1865879939
 MonoBehaviour:
@@ -9803,7 +9842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &1865879940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9872,7 +9911,7 @@ MonoBehaviour:
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -10024,7 +10063,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 2a03d6944de92db4bae2e5c073e5ee71, type: 3}
+  m_Texture: {fileID: 2800000, guid: 5734ce687d11fe84384cf64797040cb7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -10495,7 +10534,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 50d98c6723a62ec40987e17034cde28c, type: 3}
+  m_Texture: {fileID: 2800000, guid: 6fa76c06ecca64641b07d26288d73159, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -10689,7 +10728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: dc52de3d4fe1e5d4f812dfd7c507f93a, type: 3}
+  m_Texture: {fileID: 2800000, guid: 91e10ff16d678be43973b5e56f670ffc, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -11258,7 +11297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 041230cec3e55354dbf65b423f5267b8, type: 3}
+  m_Texture: {fileID: 2800000, guid: c62d11939ec54024897487b1e1dd2d6b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -11497,19 +11536,34 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229436236392855367}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de76f7169412b8f4896235a1585d8939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selector: {fileID: 1011618791}
+  _selector: {fileID: 2059652672}
   _whenSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 229436236392855366}
-        m_TargetAssemblyTypeName: Pen, Assembly-CSharp
-        m_MethodName: ClearDrawing
-        m_Mode: 1
+      - m_Target: {fileID: 1444968847}
+        m_TargetAssemblyTypeName: GestureManager, Assembly-CSharp
+        m_MethodName: TogglePinching
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  _whenUnselected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1444968847}
+        m_TargetAssemblyTypeName: GestureManager, Assembly-CSharp
+        m_MethodName: TogglePinching
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11518,9 +11572,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _whenUnselected:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &229436236392855374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11528,7 +11579,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229436236392855367}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de76f7169412b8f4896235a1585d8939, type: 3}
   m_Name: 
@@ -11537,25 +11588,25 @@ MonoBehaviour:
   _whenSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 229436236392855366}
-        m_TargetAssemblyTypeName: Pen, Assembly-CSharp
-        m_MethodName: BeginUse
-        m_Mode: 1
+      - m_Target: {fileID: 1444968847}
+        m_TargetAssemblyTypeName: GestureManager, Assembly-CSharp
+        m_MethodName: TogglePointing
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   _whenUnselected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 229436236392855366}
-        m_TargetAssemblyTypeName: Pen, Assembly-CSharp
-        m_MethodName: EndUse
-        m_Mode: 1
+      - m_Target: {fileID: 1444968847}
+        m_TargetAssemblyTypeName: GestureManager, Assembly-CSharp
+        m_MethodName: TogglePointing
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12329,10 +12380,10 @@ RectTransform:
   m_Father: {fileID: 6605892041703977119}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -23.75}
+  m_SizeDelta: {x: 600, y: 47.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6605892041386439171
 GameObject:
@@ -12351,7 +12402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &6605892041386439172
 MonoBehaviour:
   m_ObjectHideFlags: 0
