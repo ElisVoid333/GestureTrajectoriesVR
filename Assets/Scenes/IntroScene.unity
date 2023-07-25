@@ -1893,6 +1893,11 @@ MonoBehaviour:
   rightTip: {fileID: 229436236927106588}
   leftPen: {fileID: 526448468}
   rightPen: {fileID: 229436236392855367}
+  _rightSkeleton: {fileID: 0}
+  _rightHand: {fileID: 0}
+  _leftSkeleton: {fileID: 0}
+  _leftHand: {fileID: 0}
+  testing: 0
 --- !u!4 &1443294069
 Transform:
   m_ObjectHideFlags: 0
@@ -3063,10 +3068,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tell the researcher your Participant ID and press the big red button to
-    begin.
-
-'
+  m_text: In this study you will be asked to perform a series of gestures under different
+    instructions. You will first be shown a shape, then you will be asked to draw
+    that same shape. There are three different ways of performing this task, follow
+    the instructions thoroughly.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc41d5815b9a5bb48be4c84a746c4ff6, type: 2}
   m_sharedMaterial: {fileID: 7032093815205813286, guid: fc41d5815b9a5bb48be4c84a746c4ff6, type: 2}
@@ -3220,7 +3225,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 111856c8bcade9a44a279d27230f0203, type: 2}
+  m_Texture: {fileID: 2800000, guid: aafcfddfd10e43c409ddf3ef320cad9d, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3265,7 +3270,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 600, y: 274}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6605892040691969096
 CanvasRenderer:
@@ -3321,7 +3326,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 580, y: 164.39}
+  m_SizeDelta: {x: 580, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6605892040691969099
 GameObject:
@@ -3349,7 +3354,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6605892041386439171}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 7f99f7a202d5f584bb4fa625c0bd095b, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 6d6bfbbb72373894a98c535db5ed6553, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -3395,7 +3400,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 600, y: 9.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6605892041386439171
 GameObject:
@@ -3607,12 +3612,12 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
@@ -3636,5 +3641,5 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 300}
+  m_SizeDelta: {x: 600, y: 281.8}
   m_Pivot: {x: 0.5, y: 0.5}

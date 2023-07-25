@@ -30,7 +30,7 @@ public class SaveData
     public static DateTime BEGIN = new DateTime(2020, 1, 1);
 
   	public static void SetFilePath(int pid) {
-  		string fp = "participant_data_" + pid;
+  		string fp = Application.dataPath + "/LoggedData/participant_data_" + pid;
   		
   		while (File.Exists(fp+".csv")) {
   			fp = fp + "_n";
@@ -38,7 +38,7 @@ public class SaveData
 
   		filepathData = fp + ".csv";
 
-  		string fpRaw = "participant_raw_" + pid;
+  		string fpRaw = Application.dataPath + "/LoggedData/participant_raw_" + pid;
   		
   		while (File.Exists(fpRaw+".csv")) {
   			fpRaw = fpRaw + "_n";

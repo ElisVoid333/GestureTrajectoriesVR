@@ -12051,10 +12051,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tell the researcher your Participant ID and press the big red button to
-    begin.
-
-'
+  m_text: For this part of the study you will be using your index finger to draw
+    the shapes you are shown. After viewing and memorizing the shape, press the space
+    bar, hold your index finger out in a pointing position, and press the spacebar
+    again to begin drawing. Once you are done drawing press the space bar a third
+    time to stop drawing.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc41d5815b9a5bb48be4c84a746c4ff6, type: 2}
   m_sharedMaterial: {fileID: 7032093815205813286, guid: fc41d5815b9a5bb48be4c84a746c4ff6, type: 2}
@@ -12208,7 +12209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 111856c8bcade9a44a279d27230f0203, type: 2}
+  m_Texture: {fileID: 2800000, guid: aafcfddfd10e43c409ddf3ef320cad9d, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -12253,7 +12254,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 600, y: 268.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6605892040691969096
 CanvasRenderer:
@@ -12309,7 +12310,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 580, y: 164.39}
+  m_SizeDelta: {x: 580, y: 277.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6605892040691969099
 GameObject:
@@ -12337,7 +12338,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6605892041386439171}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 8e757c084f650384d9e872b466984766, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 031b74c089edf244eb9db7ec90581592, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -12359,7 +12360,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 1
   m_WaitForFirstFrame: 1
@@ -12380,10 +12381,10 @@ RectTransform:
   m_Father: {fileID: 6605892041703977119}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -23.75}
-  m_SizeDelta: {x: 600, y: 47.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 600, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6605892041386439171
 GameObject:
@@ -12402,7 +12403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &6605892041386439172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12410,12 +12411,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6605892041386439171}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e574f029f83af0940b5185b5b61a79cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playAtStart: 0
+  playAtStart: 1
   videoPlayer: {fileID: 6605892041386439169}
 --- !u!224 &6605892041702769184
 RectTransform:
@@ -12599,8 +12600,8 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
@@ -12624,5 +12625,5 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 300}
+  m_SizeDelta: {x: 600, y: 279.5}
   m_Pivot: {x: 0.5, y: 0.5}
